@@ -19,7 +19,20 @@ By evaluating the relationship between the Wholesale Price Index (WPI) and the C
 Designed a relational schema to handle separate time-series frequencies. Developed a master view leveraging window functions to isolate the headline aggregate index and simulate transmission lags across months:
 ```sql
 -- Creating 1 and 2-month wholesale inflation lags
-LAG(w.WPI_Inflation, 1) OVER (ORDER BY c.Ref_Date) AS WPI_Inflation_Lag1
+CREATE VIEW view_inflation_master AS
+SELECT 
+    c.Ref_Date,
+    c.Month_Str AS Month,
+    w.WPI_Inflation AS WPI_Inflation_Current,
+    -- Creates a 1-month lag for WPI
+    LAG(w.WPI_Inflation, 1) OVER (ORDER BY c.Ref_Date) AS WPI_Inflation_Lag1,
+    -- Creates a 2-month lag for WPI
+    LAG(w.WPI_Inflation, 2) OVER (ORDER BY c.Ref_Date) AS WPI_Inflation_Lag2,
+    c.Combined_Inflation AS CPI_Inflation_Current
+FROM cpi_data c
+INNER JOIN wpi_data w ON c.Ref_Date = w.Ref_Date
+WHERE c.Commodity_Description = 'A) General Index'
+ORDER BY c.Ref_Date ASC;
 ```
 
 ### 2. Econometric Modeling & Statistical Diagnostics (Python)
