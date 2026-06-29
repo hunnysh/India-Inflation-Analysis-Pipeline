@@ -45,11 +45,11 @@ To validate the structural integrity of the linear regression model, prediction 
 ### 3. Business Intelligence Architecture (Power BI Dashboard)
 To transform these econometric insights into a functional corporate decision tool, an interactive pricing canvas was built:
 
-* **Relational Modeling:** Established a `1:*` (One-to-Many) backend entity relationship connecting the single monthly tracking coordinates of `wpi_data` to the detailed basket coordinates of `cleaned_cpi_data`, forcing bidirectional cross-filtering.
+* **Relational Modeling:** Established a `1:*` One-to-Many backend entity relationship connecting the single monthly tracking coordinates of `wpi_data` to the detailed basket coordinates of `cleaned_cpi_data`, forcing bidirectional cross-filtering.
 * **Visual Layer Isolation:** The primary time-series line chart is locked via visual-level filtration to the headline `A) General Index` to chart clean macro trends. 
-* **Dynamic Slicing Capabilities:** By utilizing the **Edit Interactions** control panel, the drop-down commodity slicer was unlinked from the main line chart (keeping the macro anchor stable) and mapped directly to a **Clustered Bar Chart**. This allows supply-chain managers to slice deep into individual consumption layers (e.g., separating Cereals vs. Vegetables when "Food and beverages" is selected).
+* **Dynamic Slicing Capabilities:** By utilizing the **Edit Interactions** control panel, the drop-down commodity slicer was unlinked from the main line chart keeping the macro anchor stable and mapped directly to a **Clustered Bar Chart**. This allows supply-chain managers to slice deep into individual consumption layers (e.g., separating Cereals vs. Vegetables when "Food and beverages" is selected).
 
-
+![Dashboard Layout Preview](dashboard/dashboard_preview.png.jpg)
 
 ## 📊 Key Findings & Strategic Takeaways
 1. **The Pass-Through Matrix:** The contemporary model's strong performance indicates that retail inflation in India is heavily driven by immediate cost-push supply shocks ($v_t$) passed along the corporate supply-chain pipeline, rather than demand-pull overheating.
