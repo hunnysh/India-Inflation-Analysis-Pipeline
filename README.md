@@ -18,7 +18,6 @@ By evaluating the relationship between the Wholesale Price Index (WPI) and the C
 ### 1. Database Engineering (SQL)
 Designed a relational schema to handle separate time-series frequencies. Developed a master view leveraging window functions to isolate the headline aggregate index and simulate transmission lags across months:
 ```sql
--- Creating 1 and 2-month wholesale inflation lags
 CREATE VIEW view_inflation_master AS
 SELECT 
     c.Ref_Date,
